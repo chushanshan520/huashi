@@ -563,18 +563,14 @@
 		<ul class="ul2 act">
 			<li>
 				<b>登录名</b>
-				<input type="text" />
+				<input type="text" class="logname"/>
 			</li>
 			<li>
 				登录密码<a href="#">忘记登陆密码</a>
-				<input type="text" />
+				<input type="text" class="logpass"/>
 			</li>
-			<!-- <li>
-				验证码<a href="#">更换验证码</a>
-				<input type="text" class="te" />
-			</li> -->
 			<li>
-				<input type="submit" value="确认" class="sub"/>
+				<input type="submit" value="确认" class="sub" onclick="go()"/>
 			</li>
 			<li>
 				<p><a href="register.html">注册新用户</a></p>
@@ -646,8 +642,13 @@
 				constructor(options) {
 					    this.url=options.url;
 						this.cont=options.cont;
+						this.logname=document.getElementsByClassName("logname")[0];
+						this.logpass=document.getElementsByClassName("logpass")[0];
+						this.logsub=document.getElementsByClassName("sub")[0];
 						this.goods=getCookie("goods") ? JSON.parse(getCookie("goods")) : [];
+						this.log=getCookie("log") ? JSON.parse(getCookie("log")) : [];
 						this.load();
+						this.check();
 					}
 					load(){
 						var that=this;
@@ -686,6 +687,34 @@
 						setCookie("goods",JSON.stringify(this.id));
 						
 					}
+					check(){
+						var that=this;
+						this.logsub.onclick=function(){
+							that.getcoo();
+						}
+					}
+					getcoo(){
+						var lognum=JSON.parse(getCookie("log"));
+						console.log(lognum);
+						for(var i=0;i<lognum.length;i++){
+							if(this.logname.value!=lognum[i].name){
+								alert("未注册，去注册");
+							}
+							if(this.logname.value==lognum[i].name && lognum[i].pass!=this.logpass.value){
+								alert("密码不对");
+							}
+							
+							if(this.logname.value==lognum[i].name && lognum[i].pass==this.logpass.value){
+								this.go();
+								break;
+							}
+						}
+						
+					}
+					go(){
+						location.href ="../html/index.html";
+					}
+					
 
 	}
 	

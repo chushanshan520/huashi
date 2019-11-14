@@ -253,60 +253,101 @@
 		<dl>
 			<dt>猜您喜欢</dt>
 			<dd>
-				<img src="../images/details/1.jpg" />
+				<img data-src="../images/details/1.jpg" />
 				<p>爱你一万年</p>
 				<p>￥345</p>
 			</dd>
 			<dd>
-				<img src="../images/details/2.jpg" />
+				<img data-src="../images/details/2.jpg" />
 				<p>美好的恋情</p>
 				<p>￥235</p>
 			</dd>
 			<dd>
-				<img src="../images/details/3.jpg" />
+				<img data-src="../images/details/3.jpg" />
 				<p>为你而梦</p>
 				<p>￥168</p>
 			</dd>
 			<dd>
-				<img src="../images/details/4.jpg" />
+				<img data-src="../images/details/4.jpg" />
 				<p>今天你最美</p>
 				<p>￥243</p>
 			</dd>
 			<dd>
-				<img src="../images/details/5.jpg" />
+				<img data-src="../images/details/5.jpg" />
 				<p>天使的心跳</p>
 				<p>￥352</p>
 			</dd>
 			<dd>
-				<img src="../images/details/6.jpg" />
+				<img data-src="../images/details/6.jpg" />
 				<p>美丽遇见</p>
 				<p>￥675</p>
 			</dd>
 			<dd>
-				<img src="../images/details/7.jpg" />
+				<img data-src="../images/details/7.jpg" />
 				<p>甜蜜时光</p>
 				<p>￥234</p>
 			</dd>
 			<dd>
-				<img src="../images/details/8.jpg" />
+				<img data-src="../images/details/8.jpg" />
 				<p>心若有灵</p>
 				<p>￥345</p>
 			</dd>
 			<dd>
-				<img src="../images/details/9.jpg" />
+				<img data-src="../images/details/9.jpg" />
 				<p>巴黎夜话</p>
 				<p>￥456</p>
 			</dd>
 			<dd>
-				<img src="../images/details/10.jpg" />
+				<img data-src="../images/details/10.jpg" />
 				<p>吻下去爱上你</p>
 				<p>￥666</p>
 			</dd>
 			<dd>
-				<img src="../images/details/11.jpg" />
+				<img data-src="../images/details/11.jpg" />
 				<p>那一夜</p>
 				<p>￥999</p>
 			</dd>
+			<dd>
+				<img data-src="../images/details/12.jpg" />
+				<p>知心人</p>
+				<p>￥345</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/13.jpg" />
+				<p>只愿</p>
+				<p>￥239</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/14.jpg" />
+				<p>宇宙之花</p>
+				<p>￥967</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/15.jpg" />
+				<p>他们的爱情</p>
+				<p>￥9999</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/16.jpg" />
+				<p>62的含义</p>
+				<p>￥435</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/17.jpg" />
+				<p>美好的那一年</p>
+				<p>￥235</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/18.jpg" />
+				<p>相知到相识</p>
+				<p>￥673</p>
+			</dd>
+			<dd>
+				<img data-src="../images/details/19.jpg" />
+				<p>2022的等待</p>
+				<p>￥239</p>
+			</dd>
+			
 			
 		</dl>
 	</div>
@@ -317,6 +358,7 @@
 		<img src="../images/details/1_05617520683392575_1280%5B1%5D.jpg" />
 		
 	</div>
+	
 	<div class="pagination">
 		
 	</div>
@@ -479,6 +521,7 @@
 	        
 	    })
 		
+	
 	
 </script>
 <script>
@@ -700,9 +743,7 @@
 						
 					}
 				}
-				
-				
-					
+
 					
 	}	
 				new List({
@@ -711,5 +752,28 @@
 				})
 				
 </script>
-
+<script>
+	var loadimgs=document.querySelectorAll("#flower .left img");
+	var clientH=document.documentElement.clientHeight;
+	var scrollT=document.documentElement.scrollTop;
+	
+	var arr=[];
+	for(var i=0;i<loadimgs.length;i++){
+		arr.push(loadimgs[i]);
+	}
+	function lazyLoad(elements,cH,sT){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i].offsetTop<cH+sT){
+				arr[i].src=arr[i].getAttribute("data-src");
+				arr.splice(i,1);
+				i--;
+			}
+		}
+	}
+	lazyLoad(loadimgs,clientH,scrollT);
+	onscroll=function(){
+		var scrollT=document.documentElement.scrollTop;
+		lazyLoad(loadimgs,clientH,scrollT);
+	}
+</script>
 </html>
