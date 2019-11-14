@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="../css/public.css" rel="stylesheet" type="text/css">
+	<link href="../css/register.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="header" class="margin">
+		<div class="logo">
+			<a href="#">
+				<img src="../images/register/05166631110429063.jpg" />
+			</a>
+		</div>
+		<div class="right">
+			<b>我已经注册，现在就<a href="login.html">登陆</a></b>
+		</div>
+	</div>
+	
+	<div id="register">
+		<div class="margin">
+			<div class="cen">
+				<ul class="ul1">
+					<li class="active"><a href="#">账号注册</a></li>
+					<li><a href="#">手机登录</a></li>
+				</ul>
+				
+				<div class="more1">
+					<ul>
+						<li>
+							用户名&nbsp;：&nbsp;&nbsp;<input type="text" placeholder="请使用3-15个中文,英文,数字及'-'符号" class="username"/>
+						</li>
+						<li>
+							设置密码：<input type="password" placeholder="6-20个大小写英文字母、符号或数字" class="password"/>
+						</li>
+						<li>
+							确认密码：<input type="password" placeholder="请再次输入密码" class="password1"/>
+						</li>
+						<li>
+							邮箱 &nbsp;：&nbsp;&nbsp;&nbsp;&nbsp; <input type="email" placeholder="输入常用邮箱作为验证及找回密码可用" class="email"/>
+						</li>
+						
+					</ul>
+					<p>
+						<input type="checkbox" class="checkbox" />阅读并同意《服务协议》
+					</p>
+					<input type="submit" value="立即注册" class="sub"/>
+				</div>
+				
+				<div class="more2 act">
+					<ul>
+						<li>
+							手机号： <input type="text" placeholder="请输入手机号"/>
+						</li>
+						
+						<li>
+							验证码： <input type="text" placeholder="请输入验证码" />
+						</li>
+						<li>
+							<p><a href="#">发送手机动态码</a></p>
+						</li>
+						<li>
+							短信验证： <input type="text" placeholder="输入6位手机验证码" class="te"/>
+						</li>
+						<li>
+							<input type="submit" value="下一步" class="sub" />
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	<div id="footer">
+		<div class="margin">
+			<div class="top">
+				<p>
+					<b>热门城市:</b>
+					<a href="#">北京石景山区金顶街附近鲜花店</a>
+					<a href="#">重庆市巴南区李家沱附近鲜花店</a>
+					<a href="#">深圳市龙华区观澜街道附近鲜花店</a>
+					<a href="#">忻州河曲移民村附近鲜花店</a>
+					<a href="#">上海交通大学附近鲜花店</a>
+					<a href="#">重庆市巴南区李家沱附近鲜花店</a>
+					<a href="#">更多</a>
+				</p>
+				<p>
+					<b>友情链接:</b>
+					<a href="#">鲜花速递</a>
+					<a href="#">网上花店</a>
+					<a href="#">鲜花速递</a>
+					<a href="#">农业之友</a>
+					<a href="#">网上鲜花店</a>
+					<a href="#">男士网</a>
+					<a href="#">花卉价格</a>
+					<a href="#">花仙居</a>
+					<a href="#">车图片</a>
+					<a href="#">温州装修</a>
+					<a href="#">中国农产品网</a>
+					<a href="#">农村致富项目</a>
+					<a href="#">购物网站</a>
+					<a href="#">公司法律师</a>
+					<a href="#">珠宝首饰</a>
+					<a href="#">包装印刷厂</a>
+					<a href="#">更多</a>
+				</p>
+			</div>
+			<div class="bto">
+			<h3>
+				<a href="#">送花攻略</a>
+				<span>|</span>
+				<a href="#">花语大全</a>
+				<span>|</span>
+				<a href="#">爱情鲜花</a>
+				<span>|</span>
+				<a href="#">生日鲜花</a>
+				<span>|</span>
+				<a href="#">开业花篮</a>
+				<span>|</span>
+				<a href="#">给老师送花</a>
+				<span>|</span>
+				<a href="#">客服中心</a>
+				<span>|</span>
+				<a href="#">网站地图</a>
+				<span>|</span>
+				<a href="#">友情链接</a>
+				
+			</h3>
+			<h3>花市网 版权所有，并保留所有权利。</h3>
+			<h3>ICP备案证书号：蜀ICP备1611133号</h3>
+			</div>
+			<ul>
+				<li><i><img src="../images/index/xin.png"/></i><b>诚信网站示范企业</b></li>
+				<li><i><img src="../images/index/yuan.png"/></i><b>可信网站信用评价</b></li>
+				<li><i><img src="../images/index/h.png"/></i><b>诚信网站示范企业</b></li>
+			</ul>
+		</div>
+	</div>
+	
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/register.js"></script>
+<script src="../js/cookie.js"></script>
+<script>
+	class regist{
+		constructor() {
+		    this.username=document.getElementsByClassName("username")[0];
+			this.password=document.getElementsByClassName("password")[0];
+			this.password1=document.getElementsByClassName("password1")[0];
+			this.checkbox=document.getElementsByClassName("checkbox")[0];
+			this.email=document.getElementsByClassName("email")[0];
+			this.log=getCookie("log") ? JSON.parse(getCookie("log")) : [];
+			this.sub=document.getElementsByClassName("sub")[0];
+			this.reg();
+		}
+		
+		reg(){
+			var that=this;
+			this.sub.onclick=function(){
+				that.checkUser();
+				
+			}
+		}
+		checkUser(){
+			var user=this.username.value; 
+			var pass=this.password.value;
+			var pass1=this.password1.value;
+			var emi=this.email.value;
+			var reg1=/^[a-zA-Z][a-zA-Z0-9]{3,15}$/;
+			var reg2=/^[a-zA-Z0-9]{4,10}$/;
+			var reg3=/^\w+@\w+\.(com)$|(cn)$/;
+			if(reg1.test(user) && reg2.test(pass) && reg3.test(emi) && pass==pass1 && this.checkbox.checked==true){
+					alert("注册成功");
+					this.setcoo();
+				}else{
+					alert("注册失败");
+				}
+			}
+		
+		setcoo(){
+					this.log.push({
+						name:this.username.value,
+						pass:this.password.value
+						
+					})
+					setCookie("log",JSON.stringify(this.log));
+		}
+		
+	}
+new regist();
+</script>
+</html>
