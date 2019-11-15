@@ -119,6 +119,7 @@ $("#banner").banner({
 							
 							if(this.logname.value==lognum[i].name && lognum[i].pass==this.logpass.value){
 								this.go();
+								alert("欢迎登陆");
 								break;
 							}
 						}
@@ -126,6 +127,7 @@ $("#banner").banner({
 					}
 					go(){
 						location.href ="../html/index.html";
+						
 					}
 					
 

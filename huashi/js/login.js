@@ -26,9 +26,11 @@ class login{
 			for(var i=0;i<log.length;i++){
 				if(log[i].name!=this.idname.value){
 					alert("未注册，去注册");
+					break;
 				}
 				if(log[i].name==this.idname.value && log[i].pass!=this.idword.value){
 					alert("密码不对");
+					break;
 				}
 				if(log[i].name==this.idname.value && log[i].pass==this.idword.value){
 					this.go();
